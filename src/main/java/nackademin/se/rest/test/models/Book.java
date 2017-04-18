@@ -74,14 +74,14 @@ public class Book {
     }
 
     /**
-     * @return the isbn
+     * @return the Isbn
      */
     public String getIsbn() {
         return isbn;
     }
 
     /**
-     * @param isbn the isbn to set
+     * @param isbn the Isbn to set
      */
     public void setIsbn(String isbn) {
         this.isbn = isbn;

@@ -10,6 +10,20 @@ package nackademin.se.rest.test.models;
  * @author jesper
  */
 public class SingleBook {
+
+    /**
+     * @return the author
+     */
+    public Author getAuthor() {
+        return author;
+    }
+
+    /**
+     * @param author the author to set
+     */
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
     private Book book;
     private Author author;
     

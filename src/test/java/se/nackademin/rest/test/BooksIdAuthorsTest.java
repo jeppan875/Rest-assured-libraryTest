@@ -6,10 +6,14 @@
 package se.nackademin.rest.test;
 
 import com.jayway.restassured.response.Response;
+import nackademin.se.rest.test.BookOperation;
 import nackademin.se.rest.test.ResponseOperation;
+import nackademin.se.rest.test.models.Book;
+import nackademin.se.rest.test.models.SingleBook;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static se.nackademin.rest.test.BooksByAuthorIdTest.BASE_URL;
+import static se.nackademin.rest.test.BooksTest.BASE_URL;
 
 /**
  *
@@ -32,5 +36,9 @@ public class BooksIdAuthorsTest {
         String bookId=9999+"/authors";
         Response response = new ResponseOperation().getResponse(BASE_URL+bookId);
         assertEquals("should return status code 404",404, response.getStatusCode());        
-    }      
+    }
+    @Test
+    public void testAddNewAuthor() {
+
+    }    
 }

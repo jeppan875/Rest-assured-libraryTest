@@ -15,8 +15,8 @@ public class Book {
     private Integer  nbOfPage;
     private String description;
     private String title;  
-    private String isbn;      
-
+    private String isbn;  
+   
     /**
      * @return the id
      */

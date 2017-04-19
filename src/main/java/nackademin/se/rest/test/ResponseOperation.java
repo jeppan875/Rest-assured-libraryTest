@@ -10,6 +10,7 @@ import static com.jayway.restassured.RestAssured.given;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import static nackademin.se.rest.test.BookOperation.BASE_URL;
+import nackademin.se.rest.test.models.Book;
 import nackademin.se.rest.test.models.SingleBook;
 
 /**
@@ -25,7 +26,8 @@ public class ResponseOperation {
     public Response postResponse(String BASE_URL, SingleBook singleBook){
         Response response = given().contentType(ContentType.JSON).body(singleBook).log().all().post(BASE_URL).prettyPeek(); 
         return response;
-}    
+}   
+      
     public Response putResponse(String BASE_URL, SingleBook singleBook){
         Response response = given().contentType(ContentType.JSON).body(singleBook).log().all().put(BASE_URL).prettyPeek(); 
         return response;

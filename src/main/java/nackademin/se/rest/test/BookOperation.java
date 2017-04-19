@@ -13,6 +13,7 @@ import static com.jayway.restassured.http.ContentType.JSON;
 import com.jayway.restassured.response.Response;
 import java.util.Random;
 import java.util.UUID;
+import nackademin.se.rest.test.models.Author;
 import nackademin.se.rest.test.models.Book;
 import nackademin.se.rest.test.models.SingleBook;
 
@@ -42,6 +43,21 @@ public class BookOperation {
         
         return singleBook;
     }
+     public Author getAuthor(int id) {
+        Author author = given().accept(ContentType.JSON).get(BASE_URL+"authors/"+id).jsonPath().getObject("author",Author.class);
+ 
+        return author;
+    }   
+    public SingleBook createRandomAuthor(){
+
+        Author author = new Author();
+        author.setName(UUID.randomUUID().toString());
+         SingleBook singleBook= new SingleBook(author);
+        
+        return singleBook;       
+        
+        
+    }  
     public String getLatestJsonString(){
     return jsonString;
     }

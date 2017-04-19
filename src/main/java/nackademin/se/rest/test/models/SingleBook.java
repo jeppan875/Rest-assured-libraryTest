@@ -11,11 +11,14 @@ package nackademin.se.rest.test.models;
  */
 public class SingleBook {
     private Book book;
+    private Author author;
     
     public SingleBook(Book book){
     this.book= book;
     }
-
+    public SingleBook(Author author){
+    this.author= author;
+    }
     /**
      * @return the book
      */

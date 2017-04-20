@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="se.nackademin.rest.test.BooksIdAuthorsTest" time="4.517" errors="0" skipped="0">
+<testsuite tests="4" failures="1" name="se.nackademin.rest.test.BooksIdAuthorsTest" time="4.715" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -61,7 +61,341 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="se.nackademin.rest.test.BooksIdAuthorsTest" name="testGetAuthorByBookId" time="3.014"/>
-  <testcase classname="se.nackademin.rest.test.BooksIdAuthorsTest" name="testAddNewAuthorToBook" time="1.252"/>
-  <testcase classname="se.nackademin.rest.test.BooksIdAuthorsTest" name="testGetAuthorByInvalidBookIdReturn404" time="0.043"/>
+  <testcase classname="se.nackademin.rest.test.BooksIdAuthorsTest" name="testUpdateAuthorListToBook" time="4.057">
+    <failure message="should return status code 200 expected:&lt;200&gt; but was:&lt;404&gt;" type="java.lang.AssertionError">java.lang.AssertionError: should return status code 200 expected:&lt;200&gt; but was:&lt;404&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at se.nackademin.rest.test.BooksIdAuthorsTest.testUpdateAuthorListToBook(BooksIdAuthorsTest.java:78)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+</failure>
+    <system-out>Request method:	POST
+Request path:	http://localhost:8080/librarytest/rest/authors/
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Body:
+{
+    &quot;author&quot;: {
+        &quot;name&quot;: &quot;4ab5d37c-d45c-4e4c-a16b-be1201cfc515&quot;
+    }
+}
+HTTP/1.1 201 Created
+Server: Apache-Coyote/1.1
+Location: http://localhost:8080/librarytest/rest/authors/152
+Content-Length: 0
+Date: Thu, 20 Apr 2017 12:37:40 GMT
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 20 Apr 2017 12:37:40 GMT
+
+{
+    &quot;authors&quot;: {
+        &quot;author&quot;: [
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;jespeer&quot;
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;Arthur C. Clarke&quot;
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;Terry Pratchett&quot;
+            },
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Margaret Atwood&quot;
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;name&quot;: &quot;Stephen Baxter&quot;
+            },
+            {
+                &quot;id&quot;: 11,
+                &quot;name&quot;: &quot;Sture Hagfors&quot;
+            },
+            {
+                &quot;id&quot;: 71,
+                &quot;name&quot;: &quot;83fd59b2-f870-403c-b829-b9a2806c32f3&quot;
+            },
+            {
+                &quot;id&quot;: 72,
+                &quot;name&quot;: &quot;702288cf-5f92-478a-bf6d-5560d78b0872&quot;
+            },
+            {
+                &quot;id&quot;: 80,
+                &quot;name&quot;: &quot;olle&quot;
+            },
+            {
+                &quot;id&quot;: 81,
+                &quot;name&quot;: &quot;dbc5f246-405d-4893-9e87-3e7011627ffb&quot;
+            },
+            {
+                &quot;id&quot;: 82,
+                &quot;name&quot;: &quot;ca02b4c5-7cc5-4b80-b8c5-aba9cbf51a63&quot;
+            },
+            {
+                &quot;id&quot;: 83,
+                &quot;name&quot;: &quot;060de830-79cd-476e-8bff-3736e5ae7659&quot;
+            },
+            {
+                &quot;id&quot;: 84,
+                &quot;name&quot;: &quot;3d6cb006-8fe2-43e2-8d47-e44cbfffaca6&quot;
+            },
+            {
+                &quot;id&quot;: 85,
+                &quot;name&quot;: &quot;348c836d-0498-408e-8c7b-716034933fd6&quot;
+            },
+            {
+                &quot;id&quot;: 86,
+                &quot;name&quot;: &quot;23c55e05-c01d-4354-a6c8-8127ab86b9a9&quot;
+            },
+            {
+                &quot;id&quot;: 87,
+                &quot;name&quot;: &quot;523e6725-6441-4c9c-a161-7fd941471f86&quot;
+            },
+            {
+                &quot;id&quot;: 88,
+                &quot;name&quot;: &quot;bcbee23e-688b-4873-a652-8f5c341b9c69&quot;
+            },
+            {
+                &quot;id&quot;: 89,
+                &quot;name&quot;: &quot;5985efdb-2afc-46e8-8a59-6e8a2a5843ad&quot;
+            },
+            {
+                &quot;id&quot;: 108,
+                &quot;name&quot;: &quot;olle&quot;
+            },
+            {
+                &quot;id&quot;: 109,
+                &quot;name&quot;: &quot;65c6b239-ffb8-4ca2-b9c1-f194ac34ab5d&quot;
+            },
+            {
+                &quot;id&quot;: 110,
+                &quot;name&quot;: &quot;olle&quot;
+            },
+            {
+                &quot;id&quot;: 111,
+                &quot;name&quot;: &quot;ddea5b78-b39c-40ad-afb2-49a3b6716c01&quot;
+            },
+            {
+                &quot;id&quot;: 112,
+                &quot;name&quot;: &quot;ba2ba450-ad14-4890-bc50-3ea49579fce6&quot;
+            },
+            {
+                &quot;id&quot;: 113,
+                &quot;name&quot;: &quot;6dfe2f79-ed02-45c1-89f7-8f25e790395c&quot;
+            },
+            {
+                &quot;id&quot;: 114,
+                &quot;name&quot;: &quot;f4dc3a99-529d-4f48-8b48-1e0bac862918&quot;
+            },
+            {
+                &quot;id&quot;: 115,
+                &quot;name&quot;: &quot;78231839-e2cd-49c1-bf7f-48a253afb132&quot;
+            },
+            {
+                &quot;id&quot;: 117,
+                &quot;name&quot;: &quot;3c6c902c-9dfc-4b64-ac93-fe2cee8bc3f7&quot;
+            },
+            {
+                &quot;id&quot;: 118,
+                &quot;name&quot;: &quot;d41e6fb8-6b5c-4cec-a417-763054e30b73&quot;
+            },
+            {
+                &quot;id&quot;: 120,
+                &quot;name&quot;: &quot;b6ac7003-1561-419e-a12e-0a6894f810fc&quot;
+            },
+            {
+                &quot;id&quot;: 121,
+                &quot;name&quot;: &quot;91c8f495-b17f-44c4-a689-7a28e8462934&quot;
+            },
+            {
+                &quot;id&quot;: 122,
+                &quot;name&quot;: &quot;4dc314d6-0b86-437b-9908-8bc84b324710&quot;
+            },
+            {
+                &quot;id&quot;: 123,
+                &quot;name&quot;: &quot;63c619c7-fe14-4322-902f-ed497acdb82a&quot;
+            },
+            {
+                &quot;id&quot;: 124,
+                &quot;name&quot;: &quot;78acbb48-54e0-4909-94da-58ad9bc3ecc5&quot;
+            },
+            {
+                &quot;id&quot;: 125,
+                &quot;name&quot;: &quot;2cc70df3-b713-4caf-b23c-0f6438c86cbc&quot;
+            },
+            {
+                &quot;id&quot;: 126,
+                &quot;name&quot;: &quot;c386cdc3-56ab-44d1-b35f-ab2a4c9cfc97&quot;
+            },
+            {
+                &quot;id&quot;: 127,
+                &quot;name&quot;: &quot;98577169-cdff-46a7-8a02-f4a43539a4e0&quot;
+            },
+            {
+                &quot;id&quot;: 128,
+                &quot;name&quot;: &quot;449a73e9-348f-4abc-8595-02f5c26e44c2&quot;
+            },
+            {
+                &quot;id&quot;: 129,
+                &quot;name&quot;: &quot;4b6782ff-decc-489d-9e42-1632f1b76b79&quot;
+            },
+            {
+                &quot;id&quot;: 130,
+                &quot;name&quot;: &quot;f4043a62-65ed-4431-b723-ed6551ac280b&quot;
+            },
+            {
+                &quot;id&quot;: 131,
+                &quot;name&quot;: &quot;ea4d5ac8-cbe4-4c9b-892b-2c133555a710&quot;
+            },
+            {
+                &quot;id&quot;: 132,
+                &quot;name&quot;: &quot;234e0c36-ff3d-4834-a370-d7bd554b865e&quot;
+            },
+            {
+                &quot;id&quot;: 133,
+                &quot;name&quot;: &quot;olle&quot;
+            },
+            {
+                &quot;id&quot;: 134,
+                &quot;name&quot;: &quot;1a0b0db0-f318-4ef7-915e-1e920fc0912c&quot;
+            },
+            {
+                &quot;id&quot;: 135,
+                &quot;name&quot;: &quot;a5e03ff8-c8a2-4490-8bc5-e2c1e8c0050a&quot;
+            },
+            {
+                &quot;id&quot;: 136,
+                &quot;name&quot;: &quot;4de3812e-8858-4763-aa22-ae304410b715&quot;
+            },
+            {
+                &quot;id&quot;: 137,
+                &quot;name&quot;: &quot;035a14d1-0d25-426e-90a1-c7ad5169468a&quot;
+            },
+            {
+                &quot;id&quot;: 138,
+                &quot;name&quot;: &quot;67055f02-1cbb-4300-ab5c-5e4a4fbc8773&quot;
+            },
+            {
+                &quot;id&quot;: 140,
+                &quot;name&quot;: &quot;3c97f1d3-5334-4a4d-9c7c-0b663e3b049c&quot;
+            },
+            {
+                &quot;id&quot;: 141,
+                &quot;name&quot;: &quot;33ba8ce0-6477-406f-b846-9004106ed649&quot;
+            },
+            {
+                &quot;id&quot;: 142,
+                &quot;name&quot;: &quot;44e7a816-8fa5-4048-8047-c116efe12d6c&quot;
+            },
+            {
+                &quot;id&quot;: 143,
+                &quot;name&quot;: &quot;4968b119-f239-4bf0-8fe3-793893beb03c&quot;
+            },
+            {
+                &quot;id&quot;: 144,
+                &quot;name&quot;: &quot;6b74a171-6101-44e1-b830-70bd94be2d84&quot;
+            },
+            {
+                &quot;id&quot;: 145,
+                &quot;name&quot;: &quot;43a3e45a-47a7-4feb-b242-66a0fd8c7082&quot;
+            },
+            {
+                &quot;id&quot;: 146,
+                &quot;name&quot;: &quot;b8acba1b-8a85-444b-958f-9cc54149a875&quot;
+            },
+            {
+                &quot;id&quot;: 147,
+                &quot;name&quot;: &quot;336c3abc-d2a7-495e-aa05-9da4c0935e84&quot;
+            },
+            {
+                &quot;id&quot;: 148,
+                &quot;name&quot;: &quot;aa3135ca-64f7-4ea5-8188-aa33e2b39de0&quot;
+            },
+            {
+                &quot;id&quot;: 149,
+                &quot;name&quot;: &quot;cb5ae642-6fe5-426a-9629-b342196e3d57&quot;
+            },
+            {
+                &quot;id&quot;: 150,
+                &quot;name&quot;: &quot;1f235513-4ed6-4c91-9787-7c981cf98d89&quot;
+            },
+            {
+                &quot;id&quot;: 151,
+                &quot;name&quot;: &quot;16caf076-918e-4cfe-bd2d-1e286f1b962f&quot;
+            },
+            {
+                &quot;id&quot;: 152,
+                &quot;name&quot;: &quot;4ab5d37c-d45c-4e4c-a16b-be1201cfc515&quot;
+            }
+        ]
+    }
+}
+Request method:	PUT
+Request path:	http://localhost:8080/librarytest/rest/books/4/authors/4
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Body:
+{
+    &quot;author&quot;: {
+        &quot;name&quot;: &quot;4ab5d37c-d45c-4e4c-a16b-be1201cfc515&quot;,
+        &quot;id&quot;: 152
+    }
+}
+HTTP/1.1 404 Not Found
+Server: Apache-Coyote/1.1
+Content-Length: 0
+Date: Thu, 20 Apr 2017 12:37:41 GMT
+</system-out>
+  </testcase>
+  <testcase classname="se.nackademin.rest.test.BooksIdAuthorsTest" name="testGetAuthorByBookId" time="0.027"/>
+  <testcase classname="se.nackademin.rest.test.BooksIdAuthorsTest" name="testAddNewAuthorToBook" time="0.347"/>
+  <testcase classname="se.nackademin.rest.test.BooksIdAuthorsTest" name="testGetAuthorByInvalidBookIdReturn404" time="0.046"/>
 </testsuite>

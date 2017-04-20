@@ -38,23 +38,26 @@ public class AuthorsTest {
                 
         Response response = new ResponseOperation().postResponse(BASE_URL, singleBook);
         assertEquals("should return status code 201",201, response.getStatusCode());
+        assertEquals(singleBook.getAuthor().getName(),new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("authors.author[-1].name"));
     }
     @Test
     public void testUpdateAuthor() {
 
         BookOperation bookOperation = new BookOperation();
-        SingleBook singleBook = bookOperation.createRandomAuthor();
+        SingleBook postSingleBook = bookOperation.createRandomAuthor();
                 
-        Response postResponse = new ResponseOperation().postResponse(BASE_URL, singleBook);
+        Response postResponse = new ResponseOperation().postResponse(BASE_URL, postSingleBook);
         assertEquals("should return status code 201",201, postResponse.getStatusCode());
 
         int id = new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("authors.author[-1].id");  
         
         Author author = bookOperation.getAuthor(id);
         author.setName("olle");
-        singleBook = new SingleBook(author);
+        SingleBook singleBook = new SingleBook(author);
                  
         Response response = new ResponseOperation().putResponse(BASE_URL, singleBook);
         assertEquals("should return status code 200",200, response.getStatusCode());
+        assertNotEquals(postSingleBook.getAuthor().getName(),new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("authors.author[-1].name"));
+        
     }    
 }

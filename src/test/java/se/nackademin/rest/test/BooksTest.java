@@ -16,6 +16,7 @@ import static com.jayway.restassured.path.json.JsonPath.*;
 import nackademin.se.rest.test.ResponseOperation;
 import nackademin.se.rest.test.models.Book;
 import nackademin.se.rest.test.models.SingleBook;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
@@ -44,23 +45,29 @@ public class BooksTest {
                 
         Response response = new ResponseOperation().postResponse(BASE_URL, singleBook);
         assertEquals("should return status code 201",201, response.getStatusCode());
-    }
+        assertEquals(singleBook.getBook().getTitle(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].title") );
+        assertEquals(singleBook.getBook().getDescription(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].description") );    
+        assertEquals(singleBook.getBook().getIsbn(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].isbn") );  
+  
+    }  
     @Test
     public void testUpdateBook() {
 
         BookOperation bookOperation = new BookOperation();
-        SingleBook singleBook = bookOperation.createRandomBook();
+        SingleBook postSingleBook = bookOperation.createRandomBook();
                 
-        Response postResponse = new ResponseOperation().postResponse(BASE_URL, singleBook);
+        Response postResponse = new ResponseOperation().postResponse(BASE_URL, postSingleBook);
         assertEquals("should return status code 201",201, postResponse.getStatusCode());
 
         int id = new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("books.book[-1].id");  
         
         Book book = bookOperation.getBook(id);
         book.setDescription("dgfgd");
-        singleBook = new SingleBook(book);
+        SingleBook singleBook = new SingleBook(book);
                  
         Response response = new ResponseOperation().putResponse(BASE_URL, singleBook);
         assertEquals("should return status code 200",200, response.getStatusCode());
+        assertNotEquals(postSingleBook.getBook().getDescription(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].description") );
+        
     }    
 }

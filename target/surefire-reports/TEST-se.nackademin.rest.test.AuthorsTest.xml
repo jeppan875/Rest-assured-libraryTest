@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="se.nackademin.rest.test.AuthorsTest" time="4.692" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="se.nackademin.rest.test.AuthorsTest" time="5.847" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/i386"/>
@@ -61,7 +61,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="se.nackademin.rest.test.AuthorsTest" name="testGetAllAuthors" time="2.828"/>
-  <testcase classname="se.nackademin.rest.test.AuthorsTest" name="testUpdateAuthor" time="1.434"/>
-  <testcase classname="se.nackademin.rest.test.AuthorsTest" name="testAddNewAuthor" time="0.189"/>
+  <testcase classname="se.nackademin.rest.test.AuthorsTest" name="testGetAllAuthors" time="2.751"/>
+  <testcase classname="se.nackademin.rest.test.AuthorsTest" name="testUpdateAuthor" time="1.954"/>
+  <testcase classname="se.nackademin.rest.test.AuthorsTest" name="testAddNewAuthor" time="0.948"/>
 </testsuite>

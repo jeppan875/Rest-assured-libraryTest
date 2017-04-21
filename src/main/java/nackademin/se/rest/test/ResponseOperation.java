@@ -20,17 +20,17 @@ import nackademin.se.rest.test.models.SingleBook;
  */
 public class ResponseOperation {
     
-    public Response getResponse(String BASE_URL){
-        Response response = given().accept(ContentType.JSON).get(BASE_URL).prettyPeek();
+    public Response getResponse(String url){
+        Response response = given().accept(ContentType.JSON).get(url).prettyPeek();
         return response;
 }
-    public Response postResponse(String BASE_URL, SingleBook singleBook){
-        Response response = given().contentType(ContentType.JSON).body(singleBook).log().all().post(BASE_URL).prettyPeek(); 
+    public Response postResponse(String url, Object object){
+        Response response = given().contentType(ContentType.JSON).body(object).post(url).prettyPeek(); 
         return response;
 }     
       
-    public Response putResponse(String BASE_URL, SingleBook singleBook){
-        Response response = given().contentType(ContentType.JSON).body(singleBook).log().all().put(BASE_URL).prettyPeek(); 
+    public Response putResponse(String url, Object object){
+        Response response = given().contentType(ContentType.JSON).body(object).put(url).prettyPeek(); 
         return response;
 }
     public Response deleteResponse(String BASE_URL){

@@ -41,20 +41,24 @@ public class BooksTest {
     @Test
     public void testAddNewBook() {
         BookOperation bookOperation = new BookOperation();
-        SingleBook singleBook = bookOperation.createRandomBook();
+        SingleBook singleBook = new SingleBook(bookOperation.createRandomBook());
                 
-        Response response = new ResponseOperation().postResponse(BASE_URL, singleBook);
-        assertEquals("should return status code 201",201, response.getStatusCode());
+        Response postResponse = new ResponseOperation().postResponse(BASE_URL, singleBook);
+        assertEquals("should return status code 201",201, postResponse.getStatusCode());
         assertEquals(singleBook.getBook().getTitle(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].title") );
         assertEquals(singleBook.getBook().getDescription(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].description") );    
-        assertEquals(singleBook.getBook().getIsbn(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].isbn") );  
+        assertEquals(singleBook.getBook().getIsbn(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].isbn") ); 
+
+        singleBook.getBook().setId(new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("books.book[-1].id"));
+        Response postExistingBookIdResponse = new ResponseOperation().postResponse(BASE_URL, singleBook);
+        assertEquals("should return status code 400",400, postExistingBookIdResponse.getStatusCode());        
   
     }  
     @Test
     public void testUpdateBook() {
 
         BookOperation bookOperation = new BookOperation();
-        SingleBook postSingleBook = bookOperation.createRandomBook();
+        SingleBook postSingleBook = new SingleBook(bookOperation.createRandomBook());
                 
         Response postResponse = new ResponseOperation().postResponse(BASE_URL, postSingleBook);
         assertEquals("should return status code 201",201, postResponse.getStatusCode());
@@ -65,9 +69,12 @@ public class BooksTest {
         book.setDescription("dgfgd");
         SingleBook singleBook = new SingleBook(book);
                  
-        Response response = new ResponseOperation().putResponse(BASE_URL, singleBook);
-        assertEquals("should return status code 200",200, response.getStatusCode());
+        Response putResponse = new ResponseOperation().putResponse(BASE_URL, singleBook);
+        assertEquals("should return status code 200",200, putResponse.getStatusCode());
         assertNotEquals(postSingleBook.getBook().getDescription(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].description") );
-        
+
+        singleBook.getBook().setId(new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("books.book[-1].id")+1);
+        Response putBookNotFoundResponse = new ResponseOperation().putResponse(BASE_URL, singleBook);
+        assertEquals("should return status code 404",404, putBookNotFoundResponse.getStatusCode());
     }    
 }

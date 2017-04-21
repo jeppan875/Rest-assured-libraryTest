@@ -37,7 +37,7 @@ public class AuthorsIdTest {
     }
     @Test    
     public void testGetInvalidAuthorReturn404() {
-        int id = 9999;
+        int id = new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("authors.author[-1].id")+1;
         
         Response response = new ResponseOperation().getResponse(BASE_URL+id);
         assertEquals("should return status code 404",404, response.getStatusCode());    

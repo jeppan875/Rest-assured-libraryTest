@@ -12,6 +12,7 @@ import nackademin.se.rest.test.models.Book;
 import nackademin.se.rest.test.models.SingleBook;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static se.nackademin.rest.test.BooksTest.BASE_URL;
 
 /**
  *
@@ -38,7 +39,7 @@ public class BooksIdTest {
     }    
       @Test
     public void testGetInvalidBookReturn404() {        
-        int id = 8889;
+        int id = new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("books.book[-1].id")+1;
         
         Response response = new ResponseOperation().getResponse(BASE_URL+id);
         assertEquals("should return status code 404",404, response.getStatusCode());    

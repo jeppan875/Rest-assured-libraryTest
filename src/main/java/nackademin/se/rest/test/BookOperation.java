@@ -32,29 +32,27 @@ public class BookOperation {
  
         return book;
     }    
-    public SingleBook createRandomBook(){
+    public Book createRandomBook(){
 
         Book book = new Book();
         book.setDescription(UUID.randomUUID().toString());
         book.setTitle(UUID.randomUUID().toString());
         book.setIsbn(UUID.randomUUID().toString());
         book.setNbOfPage(new Random().nextInt(500));
-        SingleBook singleBook= new SingleBook(book);
         
-        return singleBook;
+        return book;
     }
      public Author getAuthor(int id) {
         Author author = given().accept(ContentType.JSON).get(BASE_URL+"authors/"+id).jsonPath().getObject("author",Author.class);
  
         return author;
     }   
-    public SingleBook createRandomAuthor(){
+    public Author createRandomAuthor(){
 
         Author author = new Author();
         author.setName(UUID.randomUUID().toString());
-         SingleBook singleBook= new SingleBook(author);
         
-        return singleBook;       
+        return author;       
         
         
     }  

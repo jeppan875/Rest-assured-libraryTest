@@ -34,17 +34,22 @@ public class AuthorsTest {
     @Test
     public void testAddNewAuthor() {
         BookOperation bookOperation = new BookOperation();
-        SingleBook singleBook = bookOperation.createRandomAuthor();
+        SingleBook singleBook = new SingleBook(bookOperation.createRandomAuthor());
                 
         Response response = new ResponseOperation().postResponse(BASE_URL, singleBook);
         assertEquals("should return status code 201",201, response.getStatusCode());
         assertEquals(singleBook.getAuthor().getName(),new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("authors.author[-1].name"));
+ 
+        singleBook.getAuthor().setId(new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("authors.author[-1].id"));
+        Response postExistingAuthorIdresponse = new ResponseOperation().postResponse(BASE_URL, singleBook);
+        assertEquals("should return status code 400",400, postExistingAuthorIdresponse.getStatusCode());        
     }
+  
     @Test
     public void testUpdateAuthor() {
 
         BookOperation bookOperation = new BookOperation();
-        SingleBook postSingleBook = bookOperation.createRandomAuthor();
+        SingleBook postSingleBook = new SingleBook(bookOperation.createRandomAuthor());
                 
         Response postResponse = new ResponseOperation().postResponse(BASE_URL, postSingleBook);
         assertEquals("should return status code 201",201, postResponse.getStatusCode());
@@ -58,6 +63,9 @@ public class AuthorsTest {
         Response response = new ResponseOperation().putResponse(BASE_URL, singleBook);
         assertEquals("should return status code 200",200, response.getStatusCode());
         assertNotEquals(postSingleBook.getAuthor().getName(),new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("authors.author[-1].name"));
-        
+
+        singleBook.getAuthor().setId(new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("authors.author[-1].id")+1);
+        Response putAuthorNotFoundResponse = new ResponseOperation().putResponse(BASE_URL, singleBook);
+        assertEquals("should return status code 404",404, putAuthorNotFoundResponse.getStatusCode());        
     }    
 }

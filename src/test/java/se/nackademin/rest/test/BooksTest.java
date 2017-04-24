@@ -48,6 +48,7 @@ public class BooksTest {
         assertEquals(singleBook.getBook().getTitle(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].title") );
         assertEquals(singleBook.getBook().getDescription(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].description") );    
         assertEquals(singleBook.getBook().getIsbn(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].isbn") ); 
+        assertEquals((long)singleBook.getBook().getNbOfPage(),(long) new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("books.book[-1].nbOfPage") ); 
 
         singleBook.getBook().setId(new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("books.book[-1].id"));
         Response postExistingBookIdResponse = new ResponseOperation().postResponse(BASE_URL, singleBook);

@@ -16,7 +16,7 @@ public class Book {
     private String description;
     private String title;  
     private String isbn;  
-   
+
     /**
      * @return the id
      */

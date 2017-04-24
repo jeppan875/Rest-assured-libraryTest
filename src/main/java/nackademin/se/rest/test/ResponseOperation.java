@@ -9,10 +9,6 @@ import static com.jayway.restassured.RestAssured.delete;
 import static com.jayway.restassured.RestAssured.given;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
-import static nackademin.se.rest.test.BookOperation.BASE_URL;
-import nackademin.se.rest.test.models.Author;
-import nackademin.se.rest.test.models.Book;
-import nackademin.se.rest.test.models.SingleBook;
 
 /**
  *

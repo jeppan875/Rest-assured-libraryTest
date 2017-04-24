@@ -13,9 +13,8 @@ import nackademin.se.rest.test.models.Book;
 import nackademin.se.rest.test.models.SingleBook;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static se.nackademin.rest.test.AuthorsTest.BASE_URL;
-import static se.nackademin.rest.test.BooksByAuthorIdTest.BASE_URL;
-import static se.nackademin.rest.test.BooksTest.BASE_URL;
+
+
 
 /**
  *
@@ -23,8 +22,8 @@ import static se.nackademin.rest.test.BooksTest.BASE_URL;
  */
 public class BooksIdAuthorsTest {
     
-    final static String BASE_URL = "http://localhost:8080/librarytest/rest/books/"; 
-    
+    final static String BASE_URL = "http://localhost:8080/librarytest/rest/books/";
+
     public BooksIdAuthorsTest() {        
     }
     @Test
@@ -57,12 +56,12 @@ public class BooksIdAuthorsTest {
         Response response = new ResponseOperation().postResponse(BASE_URL+bookId, singleBook);
         assertEquals("should return status code 200",200, response.getStatusCode());
         
-        Response postSameAuthoToBookresponse = new ResponseOperation().postResponse(BASE_URL+bookId, singleBook);
-        assertEquals("should return status code 400",400, postSameAuthoToBookresponse.getStatusCode());          
+        Response postSameAuthorToBookresponse = new ResponseOperation().postResponse(BASE_URL+bookId, singleBook);
+        assertEquals("should return status code 400",400, postSameAuthorToBookresponse.getStatusCode());          
     }
     @Test
     public void testUpdateAuthorListToBook() {
-//        String bookId=4+"/authors/";
+//        String bookId=5+"/authors/";
 //        String postAuthorUrl = "http://localhost:8080/librarytest/rest/authors/";        
 //        
 //        BookOperation bookOperation = new BookOperation();
@@ -73,9 +72,9 @@ public class BooksIdAuthorsTest {
 //
 //        int id = new ResponseOperation().getResponse(postAuthorUrl ).jsonPath().getInt("authors.author[-1].id");   
 //        
-//        Author author = bookOperation.getAuthor(id);
+//        Author[] authors = {bookOperation.getAuthor(5),bookOperation.getAuthor(4)};
 //        
-//        Response response = new ResponseOperation().putResponse(BASE_URL+bookId, author);
+//        Response response = new ResponseOperation().putResponse(BASE_URL+bookId, authors);
 //        assertEquals("should return status code 200",200, response.getStatusCode());   
     } 
 }

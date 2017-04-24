@@ -11,19 +11,7 @@ package nackademin.se.rest.test.models;
  */
 public class SingleBook {
 
-    /**
-     * @return the author
-     */
-    public Author getAuthor() {
-        return author;
-    }
 
-    /**
-     * @param author the author to set
-     */
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
     private Book book;
     private Author author;
     
@@ -33,6 +21,7 @@ public class SingleBook {
     public SingleBook(Author author){
     this.author= author;
     }
+ 
     /**
      * @return the book
      */
@@ -46,5 +35,17 @@ public class SingleBook {
     public void setBook(Book book) {
         this.book = book;
     }
-    
+    /**
+     * @return the author
+     */
+    public Author getAuthor() {
+        return author;
+    }
+
+    /**
+     * @param author the author to set
+     */
+    public void setAuthor(Author author) {
+        this.author = author;
+    }    
 }

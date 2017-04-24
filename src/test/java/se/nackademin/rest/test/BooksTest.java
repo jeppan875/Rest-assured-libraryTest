@@ -26,7 +26,7 @@ import org.junit.Test;
  */
 public class BooksTest {
 
-    final static String BASE_URL = "http://localhost:8080/librarytest/rest/books/";    
+     final static String BASE_URL = "http://localhost:8080/librarytest/rest/books";
     
     public BooksTest() {
     }
@@ -62,7 +62,8 @@ public class BooksTest {
                 
         Response postResponse = new ResponseOperation().postResponse(BASE_URL, postSingleBook);
         assertEquals("should return status code 201",201, postResponse.getStatusCode());
-
+        assertEquals(postSingleBook.getBook().getDescription(), new ResponseOperation().getResponse(BASE_URL).jsonPath().getString("books.book[-1].description") );    
+        
         int id = new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("books.book[-1].id");  
         
         Book book = bookOperation.getBook(id);

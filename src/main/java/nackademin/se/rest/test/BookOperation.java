@@ -15,7 +15,6 @@ import java.util.Random;
 import java.util.UUID;
 import nackademin.se.rest.test.models.Author;
 import nackademin.se.rest.test.models.Book;
-import nackademin.se.rest.test.models.SingleBook;
 
 /**
  *

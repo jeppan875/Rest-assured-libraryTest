@@ -14,6 +14,7 @@ public class Author {
     private String name;
     private Integer id;
 
+    
     /**
      * @return the name
      */

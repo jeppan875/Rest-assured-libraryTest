@@ -13,8 +13,6 @@ import nackademin.se.rest.test.models.Book;
 import nackademin.se.rest.test.models.SingleBook;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static se.nackademin.rest.test.BooksIdAuthorsTest.BASE_URL;
-import static se.nackademin.rest.test.BooksTest.BASE_URL;
 
 /**
  *

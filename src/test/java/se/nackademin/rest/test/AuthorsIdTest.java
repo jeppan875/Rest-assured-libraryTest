@@ -13,7 +13,7 @@ import nackademin.se.rest.test.models.Book;
 import nackademin.se.rest.test.models.SingleBook;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static se.nackademin.rest.test.BooksIdTest.BASE_URL;
+import static se.nackademin.rest.test.AuthorsTest.BASE_URL;
 
 /**
  *
@@ -45,7 +45,11 @@ public class AuthorsIdTest {
       @Test
     public void deleteBook() {        
         BookOperation bookOperation = new BookOperation();
-        bookOperation.createRandomAuthor();
+        SingleBook singleBook = new SingleBook(bookOperation.createRandomAuthor());
+                
+        Response postResponse = new ResponseOperation().postResponse(BASE_URL, singleBook);
+        assertEquals("should return status code 201",201, postResponse.getStatusCode());
+        
         int id = new ResponseOperation().getResponse(BASE_URL).jsonPath().getInt("authors.author[-1].id");
         
         Response response = new ResponseOperation().deleteResponse(BASE_URL+id);
